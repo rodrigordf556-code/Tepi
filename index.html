@@ -16,15 +16,14 @@
 }
 
 body{
-  background:#f0fdf4; /* Verde bem clarinho de fundo */
-  color:#2d3748; /* Texto em cinza escuro para contraste */
+  background:#f0fdf4; 
+  color:#2d3748; 
   overflow-x: hidden;
 }
 
-/* DEFINIÇÃO DO VERDE CLARO NEON */
 :root {
-  --neon-claro: #2ecc71; /* Verde mais sólido para fundo claro */
-  --neon-glow: 0 0 5px #a3ffac, 0 0 10px #2ecc71; 
+  --neon-claro: #2ecc71; 
+  --neon-vibrante: #a3ffac; /* Verde neon para destaque */
 }
 
 /* MENU LATERAL */
@@ -46,7 +45,7 @@ body{
 }
 
 .menu h2{
-  color: #a3ffac;
+  color: var(--neon-vibrante);
   text-shadow: 0 0 10px rgba(163, 255, 172, 0.5);
   margin-bottom:30px;
 }
@@ -63,15 +62,16 @@ body{
   color: var(--neon-claro);
 }
 
-/* BOTÃO MENU */
+/* BOTÃO MENU - AJUSTADO PARA VERDE NEON DESTACADO */
 .menu-btn{
   position:fixed;
   top:20px;
   left:20px;
-  font-size:24px;
+  font-size:32px; /* Aumentei um pouco o tamanho */
   cursor:pointer;
   z-index:1000;
-  color: #1a202c;
+  color: var(--neon-vibrante); /* Verde Neon */
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5), 0 0 10px var(--neon-vibrante); /* Sombra para destacar no claro e escuro */
 }
 
 /* HERO */
@@ -98,7 +98,6 @@ body{
   color: #f7fafc;
 }
 
-/* Botão com link do WhatsApp */
 .btn{
   background: var(--neon-claro);
   color: #fff;
@@ -115,11 +114,9 @@ body{
 
 .btn:hover{
   transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
   background: #27ae60;
 }
 
-/* SEÇÕES */
 section{
   padding:80px 20px;
   text-align:center;
@@ -152,7 +149,6 @@ section{
   margin-bottom: 15px;
 }
 
-/* GALERIA */
 .gallery img{
   width:300px;
   height: 250px;
@@ -163,7 +159,6 @@ section{
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* CTA */
 .cta{
   background: #2d3748;
   color:#fff;
@@ -174,10 +169,9 @@ section{
 
 .cta h2{
   margin-bottom:20px;
-  color: #a3ffac;
+  color: var(--neon-vibrante);
 }
 
-/* RODAPÉ */
 footer{
   background:#1a202c;
   color: #fff;
@@ -186,12 +180,11 @@ footer{
 }
 
 footer a{
-  color:#a3ffac;
+  color: var(--neon-vibrante);
   margin:0 10px;
   text-decoration:none;
 }
 
-/* RESPONSIVO */
 @media(max-width:768px){
   .hero h1{ font-size:28px; }
   .card { width: 100%; }
@@ -224,15 +217,15 @@ footer a{
   <div class="cards">
     <div class="card">
       <h3>O Tepi</h3>
-      <p>O Tepi é um sopro de cura. É o instrumento utilizado para aplicar o Rapé em outra pessoa, permitindo a transmissão de energia e foco espiritual.</p>
+      <p>O Tepi é um sopro de cura. Instrumento utilizado para aplicar o Rapé em outra pessoa, permitindo a transmissão de energia.</p>
     </div>
     <div class="card">
       <h3>O Rapé</h3>
-      <p>Uma medicina ancestral composta por tabaco e cinzas de árvores sagradas. Proporciona clareza mental, limpeza física e alinhamento energético.</p>
+      <p>Medicina ancestral que proporciona clareza mental, limpeza física e alinhamento energético.</p>
     </div>
     <div class="card">
       <h3>Produção Artesanal</h3>
-      <p>Cada peça é única, feita com materiais naturais e consagrada para que cumpra seu propósito de conexão com a floresta.</p>
+      <p>Cada peça é única, feita com materiais naturais e consagrada com respeito.</p>
     </div>
   </div>
 </section>
@@ -240,14 +233,13 @@ footer a{
 <section id="galeria" class="gallery">
   <h2>Minhas Criações</h2>
   <div>
-    <img src="fotos/foto2.jpg" alt="Tepi Artesanal 1">
-    <img src="fotos/foto3.jpg" alt="Tepi Artesanal 2">
+    <img src="fotos/foto2.jpg" alt="Tepi 1">
+    <img src="fotos/foto3.jpg" alt="Tepi 2">
   </div>
 </section>
 
 <section class="cta">
   <h2>Deseja um instrumento personalizado?</h2>
-  <p style="margin-bottom: 30px; color: #cbd5e0;">Entre em contato para encomendar uma peça exclusiva.</p>
   <a href="https://wa.me/5511911161774?text=Gostaria%20de%20adquirir%20minha%20Tepi" class="btn">Conversar no WhatsApp</a>
 </section>
 
@@ -258,12 +250,7 @@ footer a{
 </section>
 
 <footer>
-  <div>
-    <a href="#">Início</a>
-    <a href="#tepi">Tepi</a>
-    <a href="#galeria">Criações</a>
-  </div>
-  <p style="margin-top:20px; font-size: 0.8rem; color: #718096;">© 2026 Tepis Artesanais - Arte e Cura</p>
+  <p>© 2026 Tepis Artesanais - Arte e Cura</p>
 </footer>
 
 <script>
@@ -271,13 +258,11 @@ function toggleMenu() {
     const menu = document.getElementById('menu');
     menu.classList.toggle('active');
 }
-
 document.querySelectorAll('.menu a').forEach(link => {
     link.addEventListener('click', () => {
         document.getElementById('menu').classList.remove('active');
     });
 });
-
 document.addEventListener('click', (event) => {
     const menu = document.getElementById('menu');
     const btn = document.querySelector('.menu-btn');
